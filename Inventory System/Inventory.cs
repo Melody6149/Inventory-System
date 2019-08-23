@@ -30,8 +30,8 @@ namespace Inventory_System
 
 
         int Weaponweight = 0;  // for weight system
-        int weaponweight = 0;  // for weight system
-        int maxweight = 100    //sets max weight for player
+        int armorweight = 0;  // for weight system
+        int maxweight = 100;    //sets max weight for player
 
         public void Menu()
         {
@@ -124,30 +124,58 @@ namespace Inventory_System
             }
             else if (Weaponsubmenuchoice == "1")
             {
-
-                Console.WriteLine("You picked the sword");
-                damage = 50;
-
+                if (armorweight + 30 >= maxweight) //checks if weapon weight and armor wieght are above the max weight
+                {
+                    Console.WriteLine("This weapon is to heavy to use with your current armor");
+                }
+                else if (armorweight + 30 <= maxweight) //checks if weapon weight and armor wieght are under the max weight
+                {
+                    Console.WriteLine("You picked the sword");
+                    damage = 50; // sets damage
+                    Weaponweight = 30; //sets weapon weight for use when picking armor
+                }
 
 
             }
             else if (Weaponsubmenuchoice == "2")
             {
-                Console.WriteLine("You picked the GreatSword");
-                damage = 100;
+                if (armorweight + 80 >= maxweight) //checks if weapon weight and armor wieght are above the max weight
+                {
+                    Console.WriteLine("This weapon is to heavy to use with your current armor");
+                }
+                else if (armorweight + 80 <= maxweight)
+                {
+                    Console.WriteLine("You picked the GreatSword");
+                    damage = 100;
+                    Weaponweight = 80;
+                }
 
             }
             else if (Weaponsubmenuchoice == "3")
             {
-                Console.WriteLine("You picked the Dagger");
-                damage = 90;
-
+                if (armorweight + 10 >= maxweight) //checks if weapon weight and armor wieght are above the max weight
+                {
+                    Console.WriteLine("This weapon is to heavy to use with your current armor");
+                }
+                else if (armorweight + 10 <= maxweight)
+                {
+                    Console.WriteLine("You picked the Dagger");
+                    damage = 90;
+                    Weaponweight = 10;
+                }
             }
             else if (Weaponsubmenuchoice == "4")
             {
-                Console.WriteLine("You picked the Warhammer");
-                damage = 99;
-
+                if (armorweight + 80 >= maxweight) //checks if weapon weight and armor wieght are above the max weight
+                {
+                    Console.WriteLine("This weapon is to heavy to use with your current armor");
+                }
+                else if (armorweight + 80 <= maxweight)
+                {
+                    Console.WriteLine("You picked the Warhammer");
+                    damage = 99;
+                    Weaponweight = 80;
+                }
             }
             else if (Weaponsubmenuchoice == "0") // making this for unequping a weapon in the same sub menu
             {
@@ -167,7 +195,7 @@ namespace Inventory_System
             if (WeaponEquiped == false)
             //checks if your weapon is rquiped or not equiped using bool. if it is false it runs this line
             {
-                Console.WriteLine("You need to equip a weapon to unequip a weapon");
+                Console.WriteLine("You unequiped your imaginary weapon");
                 Console.WriteLine();
                 return;
             }
@@ -177,6 +205,7 @@ namespace Inventory_System
             Console.WriteLine("You now do " + damage + " damage");
             WeaponEquiped = false;
             Console.WriteLine();
+            Weaponweight = 0;
 
         }
 
@@ -217,18 +246,37 @@ namespace Inventory_System
                 }
                 Console.WriteLine("you removed your armor");
                 defense = 0;
+                armorweight = 0;
             }
             else if (armorsubmenuchoice == "1")
             {
-                Console.WriteLine("You equiped light armor");
-                defense = 20;
-                armorEquiped = true;
+                if (10 + Weaponweight > maxweight) // tells game to run this code if your stuff is to heavy
+                {
+                    Console.WriteLine("This armor is to heavy to be used with this weapon.");
+                    Console.WriteLine("switch to a lighter weapon to use the armor ");
+                }
+                else if (10 + Weaponweight < maxweight)
+                {
+                    Console.WriteLine("You equiped light armor");
+                    defense = 20;
+                    armorEquiped = true;
+                    armorweight = 10;
+                }
             }
             else if (armorsubmenuchoice == "2")
             {
-                Console.WriteLine("You equiped Heavy armor");
-                defense = 100;
-                armorEquiped = true;
+                if (80 + Weaponweight >= maxweight) // tells game to run this code if your stuff is to heavy
+                {
+                    Console.WriteLine("This armor is to heavy to be used with this weapon.");
+                    Console.WriteLine("switch to a lighter weapon to use the armor or use the lighter armor. ");
+                }
+                else if (80 + Weaponweight <= maxweight)
+                {
+                    Console.WriteLine("You equiped Heavy armor");
+                    defense = 100;
+                    armorweight = 80;
+                    armorEquiped = true;
+                }
             }
         }
 
