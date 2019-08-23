@@ -11,30 +11,49 @@ namespace Inventory_System
 
         int damage = 10;
         float gold = 0.00f;
-        bool WeaponEquiped = false;
-        
+        int defense = 0;
+        bool WeaponEquiped = false; // tells game if weapon is equiped
+        string armorsubmenuchoice = "";
+        /* changed this to be easier to know what this is for
+        True means weapon eqiuped
+        False means weapon is not equiped
+        */
         string Weaponsubmenuchoice = ("0");
         /* 0 means no weapon 
          * 1 means your sword is equiped
          * 2 means your GreatSword
          * 3 means dagger
          * 4 means warhammer
-          I can use int to add more weapons later
           */
+
+        bool armorEquiped = false;
+
+
+        int Weaponweight = 0;  // for weight system
+        int weaponweight = 0;  // for weight system
+        int maxweight = 100    //sets max weight for player
+
         public void Menu()
         {
             String choice = "";
 
             while (choice != "0")
             {
-               
-                
+
+
                 Console.WriteLine("Menu");
+                Console.WriteLine("");
+                Console.WriteLine("Your damage is " + damage + ".");
+                Console.WriteLine("You have " + gold + " Gold.");
+                Console.WriteLine("Your defense is " + defense + ".");
+                Console.WriteLine("");
                 Console.WriteLine("0: Exit");
                 Console.WriteLine("1: Equip Weapon");
-                Console.WriteLine("2: Unequip Weapon");
-                Console.WriteLine("3: Give Gold");
-                Console.WriteLine("4: Remove Gold");
+
+                Console.WriteLine("2: Give Gold");
+                Console.WriteLine("3: Remove Gold");
+                Console.WriteLine("4: Armor Equip submenu");
+                Console.WriteLine("");
 
 
                 choice = Console.ReadLine();
@@ -45,23 +64,26 @@ namespace Inventory_System
                 {
                     EquipWeapon();
                 }
-                else if (choice == "2")
+                else if (choice == "5")
                 {
                     UnequipWeapon();
                 }
-                else if (choice == "3")
+                else if (choice == "2")
                 {
                     Console.WriteLine("How much gold");
                     float Goldamount = Convert.ToSingle(Console.ReadLine());
                     AddGold(Goldamount);
                 }
-                else if (choice == "4")
+                else if (choice == "3")
                 {
                     Console.WriteLine("How much gold");
                     float Goldamount = Convert.ToSingle(Console.ReadLine());
                     RemoveGold(Goldamount);
                 }
-
+                else if (choice == "4")
+                {
+                    armorsubmenu();
+                }
 
             }
         }
@@ -88,7 +110,8 @@ namespace Inventory_System
          * 4 means Warhammer */
 
             Console.WriteLine("What do you want to pick");
-            Console.WriteLine(": Exit");
+            Console.WriteLine("b: Exit");
+            Console.WriteLine("0: unequipweapon");
             Console.WriteLine("1: Sword");
             Console.WriteLine("2: GreatSword");
             Console.WriteLine("3: Dagger");
@@ -101,34 +124,39 @@ namespace Inventory_System
             }
             else if (Weaponsubmenuchoice == "1")
             {
+
                 Console.WriteLine("You picked the sword");
                 damage = 50;
-               
-                
+
+
 
             }
             else if (Weaponsubmenuchoice == "2")
             {
                 Console.WriteLine("You picked the GreatSword");
                 damage = 100;
-                
+
             }
             else if (Weaponsubmenuchoice == "3")
             {
                 Console.WriteLine("You picked the Dagger");
                 damage = 90;
-               
+
             }
             else if (Weaponsubmenuchoice == "4")
             {
                 Console.WriteLine("You picked the Warhammer");
                 damage = 99;
-               
+
+            }
+            else if (Weaponsubmenuchoice == "0") // making this for unequping a weapon in the same sub menu
+            {
+                UnequipWeapon(); //uses function for unequip weapon
             }
 
             Console.WriteLine("");
-            Console.WriteLine("You damage " + damage + " damage");
-            WeaponEquiped = true;
+            Console.WriteLine("You now do " + damage + " damage");
+            WeaponEquiped = true; // lets game know a weapon is equiped
             Console.WriteLine();
         }
 
@@ -137,7 +165,7 @@ namespace Inventory_System
 
         {
             if (WeaponEquiped == false)
-            //checks if your weapon is rquiped or not equiped
+            //checks if your weapon is rquiped or not equiped using bool. if it is false it runs this line
             {
                 Console.WriteLine("You need to equip a weapon to unequip a weapon");
                 Console.WriteLine();
@@ -149,24 +177,61 @@ namespace Inventory_System
             Console.WriteLine("You now do " + damage + " damage");
             WeaponEquiped = false;
             Console.WriteLine();
+
         }
 
         public void AddGold(float amount)
         {
             Console.WriteLine("Got " + amount + " gold!");
             gold += amount;
+            if (gold < 0) // prevents gold from going below 0
+            {
+                gold = 0;
+            }
             Console.WriteLine("You have " + gold + " gold.");
         }
         public void RemoveGold(float amount)
         {
             Console.WriteLine("You lost " + amount);
             gold -= amount;
-            if (gold < 0)
+            if (gold < 0) // prevents gold from going below 0
             {
                 gold = 0;
             }
             Console.WriteLine("You now have " + gold + " gold");
         }
+        public void armorsubmenu()
+        {
+            Console.WriteLine("Armor submenue");
+            Console.WriteLine("0:unequip armor");
+            Console.WriteLine("1: equip light armor");
+            Console.WriteLine("2: Equip Heavy armor");
+            // shows player their choices
+            armorsubmenuchoice = Console.ReadLine();
+            if (armorsubmenuchoice == "0")
+            {
+                if (armorEquiped == false)
+                {
+                    Console.WriteLine("You removed your imaginary armor."); // does nothing and sends you back to main inventory menu
+                    return;
+                }
+                Console.WriteLine("you removed your armor");
+                defense = 0;
+            }
+            else if (armorsubmenuchoice == "1")
+            {
+                Console.WriteLine("You equiped light armor");
+                defense = 20;
+                armorEquiped = true;
+            }
+            else if (armorsubmenuchoice == "2")
+            {
+                Console.WriteLine("You equiped Heavy armor");
+                defense = 100;
+                armorEquiped = true;
+            }
+        }
+
 
     }
 }
