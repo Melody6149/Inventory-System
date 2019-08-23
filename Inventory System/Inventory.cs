@@ -11,7 +11,9 @@ namespace Inventory_System
 
         int damage = 10;
         float gold = 0.00f;
-        int WeaponEquiped = 0;
+        bool WeaponEquiped = false;
+        
+        string Weaponsubmenuchoice = ("0");
         /* 0 means no weapon 
          * 1 means your sword is equiped
          * 2 means your GreatSword
@@ -19,14 +21,14 @@ namespace Inventory_System
          * 4 means warhammer
           I can use int to add more weapons later
           */
-        string Weaponchoice =(0);
         public void Menu()
         {
             String choice = "";
 
             while (choice != "0")
             {
-
+               
+                
                 Console.WriteLine("Menu");
                 Console.WriteLine("0: Exit");
                 Console.WriteLine("1: Equip Weapon");
@@ -78,25 +80,55 @@ namespace Inventory_System
                 Console.WriteLine("Equiped a weapon");
                 damage = 100; // sets damage to 100 
                 This is old code*/
-        
+
             /* 0 means no weapon 
          * 1 means your sword is equiped
          * 2 means your GreatSword
          * 3 means dagger
          * 4 means Warhammer */
 
-            Console.WriteLine ("What do you want to pick")
+            Console.WriteLine("What do you want to pick");
+            Console.WriteLine(": Exit");
             Console.WriteLine("1: Sword");
             Console.WriteLine("2: GreatSword");
             Console.WriteLine("3: Dagger");
             Console.WriteLine("4: Warhammer ");
-            Weaponchoice = Console.ReadLine();
 
+            Weaponsubmenuchoice = Console.ReadLine();
+            if (Weaponsubmenuchoice == "b")
+            {
+                return;
+            }
+            else if (Weaponsubmenuchoice == "1")
+            {
+                Console.WriteLine("You picked the sword");
+                damage = 50;
+               
+                
 
-            
+            }
+            else if (Weaponsubmenuchoice == "2")
+            {
+                Console.WriteLine("You picked the GreatSword");
+                damage = 100;
+                
+            }
+            else if (Weaponsubmenuchoice == "3")
+            {
+                Console.WriteLine("You picked the Dagger");
+                damage = 90;
+               
+            }
+            else if (Weaponsubmenuchoice == "4")
+            {
+                Console.WriteLine("You picked the Warhammer");
+                damage = 99;
+               
+            }
+
             Console.WriteLine("");
-            Console.WriteLine("You now do " + damage + " damage");
-            WeaponEquiped = 1;
+            Console.WriteLine("You damage " + damage + " damage");
+            WeaponEquiped = true;
             Console.WriteLine();
         }
 
@@ -104,7 +136,7 @@ namespace Inventory_System
         public void UnequipWeapon()
 
         {
-            if (WeaponEquiped == 0)
+            if (WeaponEquiped == false)
             //checks if your weapon is rquiped or not equiped
             {
                 Console.WriteLine("You need to equip a weapon to unequip a weapon");
@@ -115,7 +147,7 @@ namespace Inventory_System
             damage = 10; // sets damage to 10
             Console.WriteLine("");
             Console.WriteLine("You now do " + damage + " damage");
-            WeaponEquiped = 0;
+            WeaponEquiped = false;
             Console.WriteLine();
         }
 
