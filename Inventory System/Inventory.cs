@@ -29,6 +29,10 @@ namespace Inventory_System
         bool armorEquiped = false;
 
 
+        int potions = 0;
+
+        string shopChoice = "";
+
         int Weaponweight = 0;  // for weight system
         int armorweight = 0;  // for weight system
         int maxweight = 100;    //sets max weight for player
@@ -46,6 +50,8 @@ namespace Inventory_System
                 Console.WriteLine("Your damage is " + damage + ".");
                 Console.WriteLine("You have " + gold + " Gold.");
                 Console.WriteLine("Your defense is " + defense + ".");
+                Console.WriteLine("You have " + potions + " potions");
+                Console.WriteLine("You have a max carry weight of" + maxweight);
                 Console.WriteLine("");
                 Console.WriteLine("0: Exit");
                 Console.WriteLine("1: Equip Weapon");
@@ -53,6 +59,8 @@ namespace Inventory_System
                 Console.WriteLine("2: Give Gold");
                 Console.WriteLine("3: Remove Gold");
                 Console.WriteLine("4: Armor Equip submenu");
+                Console.WriteLine("5: Shop");
+                Console.WriteLine("6: use 1 potions");
                 Console.WriteLine("");
 
 
@@ -63,10 +71,6 @@ namespace Inventory_System
                 if (choice == "1")
                 {
                     EquipWeapon();
-                }
-                else if (choice == "5")
-                {
-                    UnequipWeapon();
                 }
                 else if (choice == "2")
                 {
@@ -84,7 +88,26 @@ namespace Inventory_System
                 {
                     armorsubmenu();
                 }
+                else if (choice == "5")
+                {
+                    shop();
+                }
+                else if (choice == "6")
+                {
 
+                    if (potions == 0)
+                    {
+                        Console.WriteLine("you need potions to use them");
+                        Console.ReadKey();
+                    }
+
+
+                    else if (potions > 0)
+                    {
+                        usepotions();
+                    }
+                    
+                }
             }
         }
 
@@ -185,7 +208,8 @@ namespace Inventory_System
             Console.WriteLine("");
             Console.WriteLine("You now do " + damage + " damage");
             WeaponEquiped = true; // lets game know a weapon is equiped
-            Console.WriteLine();
+            Console.WriteLine("press any key to go back to main inventory");
+            Console.ReadKey();
         }
 
 
@@ -278,8 +302,56 @@ namespace Inventory_System
                     armorEquiped = true;
                 }
             }
+            Console.WriteLine("press any key to go back to main inventory");
+            Console.ReadKey(); // waits for key to be pressed
+            Console.WriteLine();
+        }
+        public void shop()
+        {
+
+            Console.WriteLine("Shop");
+            Console.WriteLine("0: exit");
+            Console.WriteLine("1: Buy 1 potion cost 30 gold");
+            shopChoice = Console.ReadLine();
+            if (shopChoice == "0")
+            {
+                return;
+            }
+            else if (shopChoice == "1")
+            {
+                if (gold < 30) 
+                {
+                    Console.WriteLine("You need more gold to buy this");
+                    
+                }
+                
+                else if (gold > 30)
+                {
+                    Console.WriteLine("you buy 1 potion");
+                    gold = gold - 30; //takes away 30 gold
+                    
+                    potions = potions + 1;
+
+                   
+                }
+
+                // both else if and if are used to check and see if you have the gold to buy the potion
+
+                Console.WriteLine("press any key to go back to main inventory");
+                Console.ReadKey(); // waits for key to be pressed
+            }
         }
 
+
+        public void usepotions()
+        {
+            Console.WriteLine("You used 1 potion");
+            maxweight = maxweight + 30;
+            Console.WriteLine("your max weight is now " + maxweight);
+            Console.WriteLine("");
+            Console.WriteLine("press any key to go back to main inventory");
+            Console.ReadKey(); // waits for key to be pressed
+        }
 
     }
 }
