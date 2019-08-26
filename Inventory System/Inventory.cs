@@ -319,7 +319,7 @@ namespace Inventory_System
             }
             else if (shopChoice == "1")
             {
-                if (gold < 30) 
+                if (gold <= 30) 
                 {
                     Console.WriteLine("You need more gold to buy this");
                     
@@ -339,6 +339,7 @@ namespace Inventory_System
 
                 Console.WriteLine("press any key to go back to main inventory");
                 Console.ReadKey(); // waits for key to be pressed
+                Console.WriteLine();
             }
         }
 
@@ -347,10 +348,12 @@ namespace Inventory_System
         {
             Console.WriteLine("You used 1 potion");
             maxweight = maxweight + 30;
+            potions = potions - 1;
             Console.WriteLine("your max weight is now " + maxweight);
             Console.WriteLine("");
             Console.WriteLine("press any key to go back to main inventory");
             Console.ReadKey(); // waits for key to be pressed
+            Console.WriteLine();
         }
 
     }
