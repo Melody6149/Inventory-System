@@ -59,11 +59,14 @@ namespace Inventory_System
                 choice = Console.ReadLine();
                 if (choice == "1")
                 {
+                    Player.Print();
                     Console.WriteLine(Player.name());
                     Player.openinventory();
+                    
                 }
                 else if (choice == "2")
                 {
+                    character2.Print();
                     Console.WriteLine(character2.name());
                     character2.openinventory();
                 }

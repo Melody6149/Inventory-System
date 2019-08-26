@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7DA30793-A99F-42BA-AE54-E4AF1F880024}</ProjectGuid>
+    <ProjectGuid>{732911A7-93FA-44A1-AB42-CB503DB9586F}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Inventory_System</RootNamespace>
-    <AssemblyName>Inventory System</AssemblyName>
+    <RootNamespace>Defensiveitem</RootNamespace>
+    <AssemblyName>Defensiveitem</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,13 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AttackItem.cs" />
-    <Compile Include="Character.cs" />
-    <Compile Include="Defensiveitems.cs" />
-    <Compile Include="Item.cs" />
-    <Compile Include="Knight.cs" />
-    <Compile Include="Inventory.cs" />
-    <Compile Include="Wizzard.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

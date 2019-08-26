@@ -32,7 +32,8 @@ namespace Inventory_System
         {
             return _name;
         }
-        public int experiance
+        public int experiance  //for experiance
+            //uses array to increase about of exp needed
         {
             get
             {
@@ -61,6 +62,7 @@ namespace Inventory_System
             Console.WriteLine("Mana: " + _mana);
             Console.WriteLine("Dexterity: " + _dexterity);
             Console.WriteLine("Wisdome: " + _wisdom);
+            Console.WriteLine("Combat damage " + ( _strenght + _inventory.GetItemDamage()));
 
         }
         public void openinventory()
