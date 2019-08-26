@@ -51,7 +51,7 @@ namespace Inventory_System
                 Console.WriteLine("You have " + gold + " Gold.");
                 Console.WriteLine("Your defense is " + defense + ".");
                 Console.WriteLine("You have " + potions + " potions");
-                Console.WriteLine("You have a max carry weight of" + maxweight);
+                Console.WriteLine("You have a max carry weight of " + maxweight);
                 Console.WriteLine("");
                 Console.WriteLine("0: Exit");
                 Console.WriteLine("1: Equip Weapon");

@@ -11,16 +11,66 @@ namespace Inventory_System
         static void Main(string[] args)
         {
             /* Inventory inventory = new Inventory();
-
+            
              inventory.Menu();*/
 
-            Character Player = new Character("Melody");
+            string name = "";
+            string choice = "";
+            Character Player;
+            Console.WriteLine("Enter Your name");
+            name = Console.ReadLine();
+
+            while (choice != "1" && choice != "2")
+            {
+                
+                //Display menu
+                Console.WriteLine("\nChoose a job:");
+                Console.WriteLine("1: Knight");
+                Console.WriteLine("2: Wizard");
+                choice = Console.ReadLine();
+            }
+            if (choice == "1")
+            {
+                Player = new Wizzard(name);
+            }
+            else if (choice == "2")
+            {
+                Player = new Knight(name);
+            }
+            else
+            {
+                Player = new Character(name);
+            }
             Player.Print();
+
+            
 
             Console.ReadKey();
             Console.WriteLine();
             Character character2 = new Character("character2");
             character2.Print();
+
+            while (choice != "0")
+            {
+                Console.WriteLine("\nWhose inventory");
+                
+                Console.WriteLine("1: " + Player.name());
+                Console.WriteLine("2: " + character2.name());
+                choice = Console.ReadLine();
+                if (choice == "1")
+                {
+                    Console.WriteLine(Player.name());
+                    Player.openinventory();
+                }
+                else if (choice == "2")
+                {
+                    Console.WriteLine(character2.name());
+                    character2.openinventory();
+                }
+            }
+
+
+
 
             Player.experiance = 30;
             Player.experiance = Player.experiance + 50;

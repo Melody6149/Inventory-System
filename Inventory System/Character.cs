@@ -11,10 +11,15 @@ namespace Inventory_System
         private string _name = "0";
         private int _level = 1;
         private int _exp = 0;
-        private int[] _requiredXP = { 100, 300, 600, 1000 };
+        private int[] _requiredXP = { 100, 300, 600, 1000 }; // array used to have multiple reqired xp
+        
+        private Inventory _inventory = new Inventory();
 
-
-
+        protected int _health = 100;
+        protected int _mana = 100;
+        protected int _strenght= 5;
+        protected int _dexterity = 5;
+        protected int _wisdom = 5;
 
         public Character(string name)
         {
@@ -47,11 +52,20 @@ namespace Inventory_System
                 }
             }
         }
-        public void Print()
+        public void Print() //function that runs code under this
         {
             Console.WriteLine(_name);
-            Console.WriteLine("Level" +_level);
-            Console.WriteLine(_exp);
+            Console.WriteLine("Level: " +_level);
+            Console.WriteLine("Exp: " + _exp);
+            Console.WriteLine("Health: " + _health);
+            Console.WriteLine("Mana: " + _mana);
+            Console.WriteLine("Dexterity: " + _dexterity);
+            Console.WriteLine("Wisdome: " + _wisdom);
+
+        }
+        public void openinventory()
+        {
+            _inventory.Menu();
         }
         
 
