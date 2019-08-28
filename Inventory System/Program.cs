@@ -12,7 +12,7 @@ namespace Inventory_System
         {
 
 
-            Monster test = new Monster("test 1", 100, 10); //creates monster with the name testmonster with a health of 100 and a damage of 10
+            Monster test = new Monster("test 1", 1, 10); //creates monster with the name testmonster with a health of 100 and a damage of 10
             Monster test2 = new Monster("test 2", 1, 10);
             Monster test3 = new Monster("test 3", 50, 10);
             Monster test4 = new Monster("test 4", 99, 10);
@@ -24,7 +24,7 @@ namespace Inventory_System
             Encounter encounter = new Encounter(goodTeam, evilTeam);
             encounter.Print();
 
-            encounter.beginRound();
+            encounter.Start();
 
             Console.ReadKey();
 
