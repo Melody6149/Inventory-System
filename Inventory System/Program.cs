@@ -10,20 +10,62 @@ namespace Inventory_System
     {
         static void Main(string[] args)
         {
+            /* Inventory inventory = new Inventory();
+
+                         inventory.Menu();*/
+
+       /*      string playername = "";
+          string playerchoice = "";
+            Character Player;
+            Console.WriteLine("Enter Your name");
+           playername = Console.ReadLine();
+
+            while (playerchoice != "1" && playerchoice != "2")
+            {
+
+                //Display menu
+                Console.WriteLine("\nChoose a job:");
+                Console.WriteLine("1: Knight");
+                Console.WriteLine("2: Wizard");
+                playerchoice = Console.ReadLine();
+            }
+            if (playerchoice == "1")
+            {
+                Player = new Wizzard(playername);
+            }
+            else if (playerchoice == "2")
+            {
+                Player = new Knight(playername);
+            }
+            else
+            {
+                Player = new Character(playername);
+            }
+            Player.Print();
+            Player.openinventory();
+            Player.Print();
 
 
+
+            
+            Console.ReadKey();
+            */
+
+            
             Monster test = new Monster("test 1", 1, 10); //creates monster with the name testmonster with a health of 100 and a damage of 10
             Monster test2 = new Monster("test 2", 1, 10);
             Monster test3 = new Monster("test 3", 50, 10);
             Monster test4 = new Monster("test 4", 99, 10);
+            Character player = new Knight("Melody");
 
-
-            Monster[] goodTeam = {test, test2 };
-            Monster[] evilTeam = { test3, test4 };
+            Creature[] goodTeam = {test, test2, player }; //removed test 1 and 2 to check something
+            Creature[] evilTeam = { test3, test4 };
 
             Encounter encounter = new Encounter(goodTeam, evilTeam);
             encounter.Print();
 
+
+            player.openinventory();
             encounter.Start();
 
             Console.ReadKey();
@@ -34,9 +76,9 @@ namespace Inventory_System
             
              inventory.Menu();*/
 
-            string name = "";
+           /*string name = "";
             string choice = "";
-            Character Player;
+           // Character Player;
             Console.WriteLine("Enter Your name");
             name = Console.ReadLine();
 
@@ -95,8 +137,9 @@ namespace Inventory_System
                 string[] stringarray = new string[3];
                 Character[] party = { Player, character2, new Character("character3") };
 
-                Console.ReadKey();
-            }
+                Console.ReadKey();    
+            }*/
         }
     }
 }
+
