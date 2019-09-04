@@ -11,11 +11,13 @@ namespace Inventory_System
     {
         private int _currentLocation = 0; //Id of the current scene
         private Scene[] _sceneList; //List all of the scenese on the map
+        private Creature[] _players; 
 
-        public Map(int StartingSceneID, Scene[] scenes)
+        public Map(int StartingSceneID, Scene[] scenes,Creature[] players)
         {
             _currentLocation = StartingSceneID;
             _sceneList = scenes;
+            _players = players;
         }
         public int CurrentSceneID
         {
@@ -145,6 +147,16 @@ namespace Inventory_System
                 Console.WriteLine(_sceneList[_currentLocation].GetHIdden());
             }
         }
-
+        public void CheckForCreatures()
+        {
+            if (_currentLocation >= 0 && _currentLocation < _sceneList.Length)
+            {
+                Scene currentScene = _sceneList[_currentLocation];
+                if (currentScene.GetClear() == false)
+                {
+                    Encounter encounter = new Encounter(_players, currentScene.GetEnemies());
+                }
+            }
+        }
     }
 }

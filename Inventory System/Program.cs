@@ -53,36 +53,45 @@ namespace Inventory_System
                  Console.ReadKey();
                  */
 
-            /*  //                   roomname  N  S   E  W  Description
-         Scene Room = new Scene("Room", 1, 3, -1, 2, "just a big empty room \nTo the north a court yard is a courtyard /nto the south is a path to the village \nWest is a graveyard");   // 0
-         Scene courtyard = new Scene("Courtyard", -1, 0, -1, -1, "just a normal courtyard \nThere is a room to the south"); // 1
-         Scene Graveyard = new Scene("GraveYard", -1, -1, 0, -1, "The graveyard is very scary \nThere is a room to the north" );  // 2
-         Scene villige = new Scene("Village", 0, -1, -1, -1, "A normal villige there is nothing interesting here \nThere is a room to the north"); //3
+        
+              Monster test = new Monster("test 1", 100, 10); //creates monster with the name testmonster with a health of 100 and a damage of 10
+            Monster test2 = new Monster("test 2", 100, 10);
+            Monster test3 = new Monster("test 3", 55, 100);
+            Monster test4 = new Monster("test 4", 99, 50);
+            Character player = new Knight("Melody");
+            
+            
+            //                   roomname  N  S   E  W  Description
+         Scene Room = new Scene("Room", 1, 3, -1, 2, "just a big empty room \nTo the north a court yard is a courtyard /nto the south is a path to the village \nWest is a graveyard", 0);   // 0
+         Scene courtyard = new Scene("Courtyard", -1, 0, -1, -1, "just a normal courtyard \nThere is a room to the south", 0); // 1
+         Scene Graveyard = new Scene("GraveYard", -1, -1, 0, -1, "The graveyard is very scary \nThere is a room to the north", 1 );  // 2
+         Scene villige = new Scene("Village", 0, -1, -1, -1, "A normal villige there is nothing interesting here \nThere is a room to the north", 2); //3
+
+
+
+          
+          
+            Creature[] Myteam = {player};
+         Creature[] otherCreatureTeam = {test, test2 }; //removed test 1 and 2 to check something
+         Creature[] CreatureTeam = { test3, test4 };
+
+
 
          Scene[] scenes = { Room, courtyard, Graveyard, villige };
-         Map map = new Map(0, scenes);
+         Map map = new Map(0, scenes, Myteam);
          map.Menu();
 
-            */
+            
 
 
 
-         Monster test = new Monster("test 1", 100, 10); //creates monster with the name testmonster with a health of 100 and a damage of 10
-         Monster test2 = new Monster("test 2", 100, 10);
-         Monster test3 = new Monster("test 3", 55, 100);
-         Monster test4 = new Monster("test 4", 99, 50);
-         Character player = new Knight("Melody");
-
-         Creature[] goodTeam = { player, test, test2 }; //removed test 1 and 2 to check something
-         Creature[] evilTeam = { test3, test4 };
-
-         Encounter encounter = new Encounter(goodTeam, evilTeam);
-         encounter.Print();
+         Encounter encounter = new Encounter(otherCreatureTeam, CreatureTeam);
+      /*   encounter.Print();
 
 
-         player.openinventory();
+       /*  player.openinventory();
          encounter.Start();
-         
+*/         
 
          Console.ReadKey();
 
