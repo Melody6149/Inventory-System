@@ -21,6 +21,11 @@ namespace Inventory_System
 
         }
 
+        public virtual int GetDefense()
+        {
+            return 0;
+        }
+
         public virtual int GetDamage()
         {
             return 0;
@@ -37,6 +42,7 @@ namespace Inventory_System
         {
             get
             {
+
                 return _health;
             }
             set

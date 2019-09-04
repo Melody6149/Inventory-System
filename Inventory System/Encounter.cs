@@ -36,6 +36,7 @@ namespace Inventory_System
             }
         }
         public void beginRound()
+
         {
             for (int i = 0; i < _goodmonsters.Length; i++)
             {
@@ -78,7 +79,7 @@ namespace Inventory_System
                 bool team2Alive = true;
                 for (int i = 0; i < _evilmonsters.Length; i++)
                 {
-                   Creature currentMonster = _evilmonsters[i];
+                    Creature currentMonster = _evilmonsters[i];
                     if (currentMonster.Health > 0)
                     {
                         team2Alive = true;
@@ -98,11 +99,11 @@ namespace Inventory_System
 
                     //fight
                 }
-                else 
-                if (!team1Alive || !team2Alive)
-                    {
+
+                else if (!team1Alive || !team2Alive)
+                {
                     stillFighting = false;
-                     }
+                }
 
                 // if not stop
             }

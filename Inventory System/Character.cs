@@ -24,8 +24,8 @@ namespace Inventory_System
         public Character(string name)
         {
             _name = name;
-            _health = 100;
-            _maxHealth = 100;
+            
+            
         }
 
 
@@ -77,6 +77,11 @@ namespace Inventory_System
             return _strenght + _inventory.GetItemDamage(); // allows rest of program to see the damage of the player
         }
 
+
+        public override int GetDefense()
+        {
+            return _inventory.GetItemDefense();
+        }
         public override void Fight(Creature target)
         {
             if (Health == 0)
@@ -85,7 +90,8 @@ namespace Inventory_System
             }
 
             int damage = GetDamage(); // get damage of attacking monster
-
+            damage = damage - target.GetDefense(); // alows for defense to be taken from attack from attacking creature
+            
             target.Health -= damage; //
 
             Console.WriteLine(GetName() + " attacks! " + target.GetName() + " now has " + target.Health);
@@ -103,7 +109,7 @@ namespace Inventory_System
             bool validInput = false;
             while (!validInput)
             {
-                Console.WriteLine("/nWhio will " + GetName() + " fight?");
+                Console.WriteLine("\nWhio will " + GetName() + " fight?");
                 //Print menu
 
                 for (int i = 0; i < targets.Length; i++) // shows names of targets
@@ -124,3 +130,4 @@ namespace Inventory_System
 
     }
 }
+

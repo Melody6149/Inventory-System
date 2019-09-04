@@ -15,6 +15,7 @@ namespace Inventory_System
             _strenght = 7;
             _dexterity = 2;
             _wisdom = 5;
+            _maxHealth = 300;
         }
     }
 }

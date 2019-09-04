@@ -75,8 +75,9 @@ namespace Inventory_System
             }
 
             int damage = GetDamage(); // get damage of attacking monster
-
-            target.Health -= damage; //
+            
+           damage = damage - target.GetDefense(); // alows for defense to be taken from attack from attacking creature
+            target.Health -= damage; // realdamage is damage after defense is taken
 
             Console.WriteLine(GetName() + " attacks! " + target.GetName() + " now has " + target.Health);
             Console.WriteLine();
@@ -90,7 +91,10 @@ namespace Inventory_System
                 return;
             }
 
-            bool validInput = false;
+            int choice = Program.random.Next(0, targets.Length);
+            Fight(targets[choice]);
+
+          /*  bool validInput = false;
             while (!validInput)
             {
                 Console.WriteLine("\nWhio will " + GetName() + " fight?");
@@ -109,7 +113,7 @@ namespace Inventory_System
                     Fight(targets[choice]); // monster fights target
 
                 }
-            }
+            }  */
         }
        
         }
