@@ -109,7 +109,7 @@ namespace Inventory_System
             bool validInput = false;
             while (!validInput)
             {
-                Console.WriteLine("\nWhio will " + GetName() + " fight?");
+                Console.WriteLine("\nWho will " + GetName() + " fight?");
                 //Print menu
 
                 for (int i = 0; i < targets.Length; i++) // shows names of targets

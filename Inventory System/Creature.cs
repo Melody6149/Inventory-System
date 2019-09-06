@@ -10,6 +10,7 @@ namespace Inventory_System
     {
         protected int _health = 10;
         protected int _maxHealth = 10;
+        protected int _experiance = 0;
         public virtual void Fight(Creature target)
         {
 
@@ -35,6 +36,17 @@ namespace Inventory_System
         public virtual string GetName()
         {
             return "no one will see this name";
+        }
+        public virtual int experience
+        {
+            get
+            {
+                return _experiance;
+            }
+            set
+            {
+                _experiance = value;
+            }
         }
 
 

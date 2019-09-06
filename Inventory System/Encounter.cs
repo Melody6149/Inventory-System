@@ -54,7 +54,10 @@ namespace Inventory_System
         {
             Console.WriteLine("\nEncounter Start!");
             bool stillFighting = true;
-
+            if (_evilmonsters.Length == 0 || _goodmonsters.Length == 0)
+            {
+                stillFighting = false;
+            }
             while (stillFighting)
             {
                 //check if team 1 is alive
@@ -103,6 +106,17 @@ namespace Inventory_System
                 else if (!team1Alive || !team2Alive)
                 {
                     stillFighting = false;
+                    if (team1Alive)
+                    {
+                        for (int i = 0; i < _goodmonsters.Length; i++ )
+                        {
+                            Character goodguy = _goodmonsters[i] as Character;
+
+                            Console.WriteLine("YOur team won the encounter.");
+                            goodguy.experiance += 1000000;
+                            
+                        }
+                    }
                 }
 
                 // if not stop

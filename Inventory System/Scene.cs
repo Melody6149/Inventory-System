@@ -23,7 +23,7 @@ namespace Inventory_System
         private bool _clear = false; // tells game if room is cleared or not
 
 
-        public Scene(string name, int northID, int southID, int eastID, int westID, string description, int enemies)
+        public Scene(string name, int northID, int southID, int eastID, int westID, string description, Creature[] enemies)
         {
             _name = name;
             _description = description;
@@ -33,10 +33,12 @@ namespace Inventory_System
             _west = westID;
             _description = description;
             _hidden = "nothing was found";
+            _enemies = enemies;
             if (_enemies.Length == 0)
             {
                 _clear = true; 
             }
+
         }
         public Scene(string name, int northID, int southID, int eastID, int westID, string description, string hidden, Creature[] enemies)
         {
@@ -49,6 +51,11 @@ namespace Inventory_System
             _description = description;
             _hidden = hidden;
             _enemies = enemies;
+
+            if (_enemies.Length == 0)
+            {
+                _clear = true;
+            }
         }
         public string GetName()
         {

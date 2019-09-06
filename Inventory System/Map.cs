@@ -57,6 +57,10 @@ namespace Inventory_System
 
         public void Menu()
         {
+
+
+
+
             string choice = "";
             while (choice != "0")
             {
@@ -88,6 +92,10 @@ namespace Inventory_System
                 {
                     Load("save.txt");
                 }
+                else if (choice == "5")
+                {
+                    
+                }
             }
 
         }
@@ -102,7 +110,8 @@ namespace Inventory_System
             if (destination >= 0 && destination < _sceneList.Length)
             {
                 CurrentSceneID = destination;
-
+                Encounter encounter = new Encounter(_players, _sceneList[_currentLocation].GetEnemies());
+                encounter.Start();
             }
             else
             {
@@ -117,8 +126,9 @@ namespace Inventory_System
             StreamWriter writer = File.CreateText(path);
             //Write to it the same way we write
             writer.WriteLine(CurrentSceneID);
+       
 
-            //ckise it
+            //close it
             writer.Close();
 
         }
@@ -130,6 +140,8 @@ namespace Inventory_System
                 StreamReader reader = File.OpenText(path);
                 // Write to it the same way we read from the console
                 CurrentSceneID = Convert.ToInt32(reader.ReadLine());
+
+                
                 //close it
                 reader.Close();
             }
