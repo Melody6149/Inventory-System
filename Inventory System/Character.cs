@@ -64,7 +64,7 @@ namespace Inventory_System
             Console.WriteLine("Mana: " + _mana);
             Console.WriteLine("Dexterity: " + _dexterity);
             Console.WriteLine("Wisdome: " + _wisdom);
-            Console.WriteLine("Combat damage " + (GetDamage()));
+            Console.WriteLine("Combat damage " + GetDamage());
 
         }
         public void openinventory()

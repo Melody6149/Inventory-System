@@ -126,7 +126,11 @@ namespace Inventory_System
             StreamWriter writer = File.CreateText(path);
             //Write to it the same way we write
             writer.WriteLine(CurrentSceneID);
-       
+
+            writer.WriteLine(_players.Length);
+
+            
+          
 
             //close it
             writer.Close();
@@ -140,7 +144,7 @@ namespace Inventory_System
                 StreamReader reader = File.OpenText(path);
                 // Write to it the same way we read from the console
                 CurrentSceneID = Convert.ToInt32(reader.ReadLine());
-
+                
                 
                 //close it
                 reader.Close();
